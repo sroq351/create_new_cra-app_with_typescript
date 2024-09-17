@@ -2,15 +2,20 @@ import { useState } from "react";
 
 interface Props {
   placeholder: string;
-  onInputChange: () => void;
+  onInputChange: (input: string) => void;
 }
 
-export const Input = (props: Props) => {
+export const InputStartsWithA = (props: Props) => {
   const [input, setInput] = useState(" ");
 
   const inputChange = (event: any) => {
     const value: string = event.target.value;
     setInput(value);
+
+    const isInputStartsWithA = value.startsWith("a");
+    if (isInputStartsWithA) {
+      props.onInputChange(value);
+    }
   };
 
   return (
@@ -18,6 +23,6 @@ export const Input = (props: Props) => {
       placeholder={props.placeholder}
       value={input}
       onChange={inputChange}
-    ></input>
+    />
   );
 };

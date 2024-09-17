@@ -1,3 +1,4 @@
+import styles from "./Button.module.css";
 interface Props {
   label: string;
   onButtonClick: () => void;
@@ -6,7 +7,11 @@ interface Props {
 
 export const Button = (props: Props) => {
   return (
-    <button type={props.type} onClick={props.onButtonClick}>
+    <button
+      type={props.type}
+      onClick={props.onButtonClick}
+      className={styles.button}
+    >
       {props.label}
     </button>
   );
